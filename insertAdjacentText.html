@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div id="mydiv">
+		<h1 id="myh1">heading 1</h1>
+		<h2 id="myh2">heading2</h2>
+		<h3 id="myh3">heading3</h3>
+	</div>
+
+<script type="text/javascript">
+	var parentNode=document.getElementById("mydiv");
+	var h=document.getElementById("myh2");
+	var txt="hello world";
+	var txt1="my name rohini";
+	var txt2="my age is";
+	h.insertAdjacentText('beforebegin',txt);
+	h.insertAdjacentText('beforeend',txt1);
+	h.insertAdjacentText('afterbegin',txt2);
+	
+
+	console.log(parentNode);
+</script>
+</body>
+</html>
