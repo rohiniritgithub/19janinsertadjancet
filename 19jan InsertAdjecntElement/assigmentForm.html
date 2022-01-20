@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form onsubmit="return validation()">
+         <input type="text" name="first Name" id="first_N" placeholder="first name*"><br>
+        <p id="errorname" style="color: red;"></p>
+
+        <input type="text" name="Last name" id="Last_N" placeholder="Last Name*">
+         <p id="errorLname" style="color: red;"></p>
+
+        <input type="password" name="pwd" id="pwd" placeholder="password*">
+          <p id="errorPname" style="color: red;"></p>
+
+        <input type="email" name="email" id="email" placeholder="Email*">
+         <p id="errorEname" style="color: red;"></p>
+         <input type="number" name="phone number" id="ph_no" placeholder="Phone Number*">
+         <br><br>
+
+        <input type="button" value="submit" onclick="validation()">
+        <button>Delete</button>
+    
+    </form>
+    
+    <script>
+    function validation()
+    {
+        var first_Name= document.getElementById("first_N").value;
+        var last_name=document.getElementById("Last_N").value;
+        var pasword=document.getElementById("pwd").value;
+        var mail=document.getElementById("email").value;
+        var phno=document.getElementById("ph_no").value;
+
+  
+        var first_NCheck = /^[a-zA-Z @ #. ]{3,30}$/;
+        var last_nCheck= /^[a-zA-Z @ #. ]{3,30}$/;
+        var pwdCheck= /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+        var mailCheck=  /^[A-Za-z_.]{6,}@[A-Za-z]{4,}[.]{1}[A-Za-z.]{2,}$/;
+        var phonoCkeck=  /^[6789]{1}[0-9]{9}$/;
+
+
+		
+        if (first_NCheck.test(first_Name))
+        {
+            document.getElementById('errorname').innerHTML=" ";
+        }
+        else
+        {
+            document.getElementById('errorname').innerHTML="***Invalid User Name***";
+            return false;
+        }
+
+
+        if (last_nCheck.test(last_name))
+        {
+            document.getElementById('errorLname').innerHTML=" ";
+        }
+        else
+        {
+            document.getElementById('errorLname').innerHTML="***Invalid User Name***";
+            return false;
+        }
+
+         if (mailCheck.test(mail))
+        {
+            document.getElementById('errorEname').innerHTML=" ";
+        }
+        else
+        {
+            document.getElementById('errorEname').innerHTML="***Invalid User Name***";
+            return false;
+        }
+
+
+        if (phonoCkeck.test(phno))
+        {
+            document.getElementById('errorEname').innerHTML=" ";
+        }
+        else
+        {
+            document.getElementById('errorEname').innerHTML="***Invalid User Name***";
+            return false;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+     </script>
+</body>
+</html>
