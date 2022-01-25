@@ -1,0 +1,152 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title class="para">Tree</title>
+    </head>
+    <body>
+               
+            <form id="myform">
+                <input type="text" name="fname" id="fname" placeholder="FirstName*" required><br>
+                <p id="errorfname" style="color: red;"></p>
+                <input type="text" name="lname" id="lname" placeholder="LastName*" required><br>
+                <p id="errorlname" style="color: red;"></p>
+                <input type="password" name="password" id="password" placeholder="Password*" required><br>
+                <p id="errorpassword" style="color: red;"></p>
+                <input type="email" name="email" id="email" placeholder="Email*" required><br>
+                <p id="erroremail" style="color: red;"></p>
+                <input type="text" name="phone" id="phone" placeholder="Phonenumber*" required><br>
+                <p id="errorphone" style="color: red;"></p>
+                <button type="button" id="submit">Submit</button>
+                <button type="button" id="delete">Delete</button>
+            </form>
+            <div id="formdata"></div>
+            
+           
+        <script type="text/javascript">
+            var targetNode = document.getElementById("formdata");
+            var submit = document.getElementById("submit");
+            /*var fNode = document.createElement("p");
+            targetNode.appendChild(fNode);
+            targetNode.firstElementChild.textContent = "First Name: ";
+            var fNode = document.createElement("p");
+            targetNode.appendChild(fNode);
+            targetNode.firstElementChild.nextElementSibling.textContent = "last Name: ";
+            console.log(targetNode);*/
+            submit.addEventListener("click", formSubmit);
+            function formSubmit(){
+                //data collect
+                var fname = document.getElementById("fname").value;
+                var lname = document.getElementById("lname").value;
+                var pass = document.getElementById("lname").value;
+                var email = document.getElementById("email").value;
+                var phone = document.getElementById("phone").value;
+                //End Datacollection 
+
+                //Data validation
+                document.getElementById("errorfname").innerHTML="";
+                document.getElementById("errorlname").innerHTML="";
+                document.getElementById("errorpassword").innerHTML="";
+                document.getElementById("erroremail").innerHTML="";
+                document.getElementById("errorphone").innerHTML="";
+
+                 var fnamecheck = /^[a-zA-Z @ #. ]{3,30}$/;
+                 var lnamecheck = /^[a-zA-Z @ #. ]{3,30}$/;
+                 //var passwordcheck = /^([0-9])([!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+                 //var passwordcheck = "";
+                 var emailcheck = /^[A-Za-z_.]{6,}@[A-Za-z]{4,}[.]{1}[A-Za-z.]{2,}$/;
+                 var mobilecheck = /^[6789]{1}[0-9]{9}$/;
+                
+                if(!fnamecheck.test(fname))
+                { 
+                    
+                    document.getElementById("errorfname").innerHTML="Invalid First Name";
+                    return false;
+                }
+                if(!lnamecheck.test(lname))
+                {
+                    document.getElementById("errorlname").innerHTML="Invalid Last Name";
+                    return false;
+                }
+                
+                // if(!passwordcheck.test(pass))
+                // {
+                //     document.getElementById("errorpassword").innerHTML="Invalid password";
+                //     return false;
+                // }
+                if(!emailcheck.test(email))
+                {
+                    document.getElementById("erroremail").innerHTML="Invalid Email";
+                    return false;
+                } 
+                
+                if(!mobilecheck.test(phone))
+                {
+                    document.getElementById("errorphone").innerHTML="Invalid Phone Number";
+                    return false;
+                }
+                //End Data Validation
+               
+
+                   
+                    // var dclass = document.getElementsByClassName("mydata");
+                    // if(dclass.length>0)
+                    // {
+                    //     let divcount = dclass.length;
+                    //     for (i=divcount-1; i >= 0; i--) 
+                    //     {  
+                    //         console.log(divcount);
+                    //         console.log(dclass);
+                    //         dclass[i].parentNode.removeChild(dclass[i]);  
+                    //     }
+                    // }
+
+                    var dclass = document.querySelectorAll(".mydata");
+                    if(dclass.length>0)
+                    {
+                        //console.log(dclass);
+                        let divcount = dclass.length;
+                        for (i=0; i < divcount; i++) 
+                        {  
+                            //console.log(divcount);
+                            //console.log(dclass);
+                            dclass[i].parentNode.removeChild(dclass[i]);  
+                        }
+                    }
+
+                    var fNode = document.createElement("p");
+                    fNode.classList.add("mydata");
+                    fNode.textContent = "First Name: " + fname;
+                    targetNode.appendChild(fNode);
+                                      
+                    var lNode = document.createElement("p");
+                    lNode.classList.add("mydata");
+                    lNode.textContent = "Last Name: " + lname;
+                    targetNode.appendChild(lNode);
+               
+                    var eNode = document.createElement("p");
+                    eNode.classList.add("mydata");
+                    eNode.textContent = "Email: " + email;
+                    targetNode.appendChild(eNode);
+                                
+                    var pNode = document.createElement("p");
+                    pNode.classList.add("mydata");
+                    pNode.textContent = "Phone Number: " + phone;
+                    targetNode.appendChild(pNode);
+
+                    
+            }
+            var del = document.getElementById("delete");
+            del.addEventListener("click", deleteNode);
+            function deleteNode()
+            {
+               
+                if(formdata.childNodes[0]){
+                targetNode.removeChild(formdata.lastChild);
+                }
+            }   
+            
+
+        </script>
+    </body>
+</html>
